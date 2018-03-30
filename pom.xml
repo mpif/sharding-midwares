@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    <modelVersion>4.0.0</modelVersion>  
+    <groupId>com.csz</groupId>  
+    <artifactId>sharding-midware</artifactId>  
+    <version>0.0.1</version>  
+    <packaging>war</packaging>  
+    <name>sharding-midware</name>  
+    <modules> 
+        <module>sharding-redis</module>  
+        <module>sharding-jdbc</module> 
+        <module>sharding-client</module>
+    </modules>
+
+    <!-- 统一版本号、参数等管理 -->
+    <properties>
+        <project.artifactId>scf-credit-server</project.artifactId>
+        <project.version>0.0.1</project.version>
+        <profiles.dir>src/main/profiles</profiles.dir>
+        <jdk.version>1.7</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <spring.version>4.3.14.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
+        <jedis.version>2.9.0</jedis.version>
+        <org.slf4j.version>1.6.4</org.slf4j.version>
+        <org.mybatis.version>3.3.1</org.mybatis.version>
+        <org.mybatis.spring.version>1.2.4</org.mybatis.spring.version>
+        <alibaba.druid.version>1.0.20</alibaba.druid.version>
+        <mysql.connector.version>5.1.38</mysql.connector.version>
+
+    </properties>
+
+    <!-- 版本指定 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.csz</groupId>
+                <artifactId>sharding-jdbc</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.csz</groupId>
+                <artifactId>sharding-redis</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${org.mybatis.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${org.mybatis.spring.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Druid DataSource -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${alibaba.druid.version}</version>
+            </dependency>
+
+            <!-- MySQL Connector -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.4.2</version>
+            </dependency>
+
+            <!-- google gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- LOG库 -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${org.slf4j.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+    <build> 
+        <finalName>sharding-midware</finalName>  
+        <plugins> 
+            <plugin> 
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>2.5.1</version>  
+                <configuration>
+                    <source>1.7</source>  
+                    <encoding>UTF8</encoding>  
+                    <target>1.7</target> 
+                </configuration> 
+            </plugin> 
+        </plugins>  
+        <resources> 
+            <resource> 
+                <directory>src/main/resources</directory>  
+                <filtering>true</filtering> 
+            </resource> 
+        </resources> 
+    </build>  
+    <profiles> 
+        <profile>
+            <id>std-test</id>  
+            <properties> 
+                <env>std-test</env> 
+            </properties> 
+        </profile>  
+        <profile> 
+            <id>product</id>  
+            <properties> 
+                <env>product</env> 
+            </properties> 
+        </profile> 
+    </profiles> 
+</project>
